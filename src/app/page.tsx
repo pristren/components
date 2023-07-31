@@ -1,113 +1,353 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
+"use client";
+import Image from "next/image";
+import { useState } from "react";
+const solutions = [
+  {
+    name: "Insights",
+    description: "Measure actions your users take",
+    href: "##",
+    // icon: IconOne,
+  },
+  {
+    name: "Automations",
+    description: "Create your own targeted content",
+    href: "##",
+    // icon: IconTwo,
+  },
+  {
+    name: "Reports",
+    description: "Keep track of your growth",
+    href: "##",
+    // icon: IconThree,
+  },
+];
 
 export default function Home() {
+  const [isopen, setIsopen] = useState({
+    open: false,
+    menuName: "",
+  });
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="bg-[#D9E8E5] px-8 lg:px-24 py-12">
+      <header>
+        <nav
+          className="bg-white shadow-sm px-6 py-4 rounded"
+          onMouseLeave={() =>
+            setIsopen({
+              open: false,
+              menuName: "",
+            })
+          }
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <div className="flex justify-between items-center">
+            <div className="flex gap-x-2 items-center">
+              <Image src="./logo.svg" alt="logo" width={50} height={50} />
+              <h1 className="text-lg font-medium text-[#2D3B3B]">Pachama</h1>
+            </div>
+            <div className="md:flex hidden lg:gap-x-8 md:gap-x-6 items-center">
+              <a
+                onMouseEnter={() =>
+                  setIsopen({
+                    open: false,
+                    menuName: "",
+                  })
+                }
+                href="#"
+                className="text-base font-medium text-gray-400 hover:text-gray-600 transition-colors duration-300"
+              >
+                About us
+              </a>
+              <a
+                onMouseEnter={() =>
+                  setIsopen({
+                    open: false,
+                    menuName: "",
+                  })
+                }
+                href="#"
+                className="text-base font-medium text-gray-400 hover:text-gray-600 transition-colors duration-300"
+              >
+                How it works
+              </a>
+              <div className="flex items-center -ms-2 relative">
+                <a
+                  onMouseEnter={() =>
+                    setIsopen({
+                      open: true,
+                      menuName: "explore",
+                    })
+                  }
+                  href="#"
+                  className="text-base font-medium text-gray-400 hover:text-gray-600 transition-colors duration-300"
+                >
+                  Explore
+                </a>
+                <svg
+                  onMouseEnter={() =>
+                    setIsopen({
+                      open: true,
+                      menuName: "explore",
+                    })
+                  }
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  style={{
+                    fill: "rgba(0, 0, 0, 0.3)",
+                    transform: "",
+                    msFilter: "",
+                  }}
+                >
+                  <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
+                </svg>
+                <div
+                  onMouseLeave={() => {
+                    let time = false;
+                    setTimeout(() => {
+                      time = true;
+                    }, 1000);
+                    if (time) {
+                      if (isopen.menuName !== "") {
+                        setIsopen({
+                          open: true,
+                          menuName: isopen.menuName,
+                        });
+                      } else {
+                        setIsopen({
+                          open: false,
+                          menuName: "",
+                        });
+                      }
+                    }
+                  }}
+                  className={`left-1/2 z-10 mt-3   -translate-x-1/2 top-[2.60rem] transform px-4 sm:px-0 w-screen lg:max-w-xl max-w-sm 
+                  ${
+                    isopen.open && isopen.menuName === "explore"
+                      ? "absolute"
+                      : "hidden"
+                  }
+                  `}
+                  //  ${
+                  //   isopen ? "absolute" : "hidden "
+                  // }
+                >
+                  <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-1">
+                      {solutions.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                        >
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
+                            {/* <item.icon aria-hidden="true" /> */}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="36"
+                              height="36"
+                              viewBox="0 0 24 24"
+                              style={{
+                                fill: "rgba(0, 0, 0, 0.3)",
+                                transform: "",
+                                msFilter: "",
+                              }}
+                              // "fill: rgba(0, 0, 0, 0.3);transform: ;msFilter:;"
+                            >
+                              <path d="M3 16h2v5H3zm4-3h2v8H7zm4-3h2v11h-2zm4-3h2v14h-2z"></path>
+                            </svg>
+                          </div>
+                          <div className="ml-4">
+                            <p className="text-sm font-medium text-gray-900">
+                              {item.name}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              {item.description}
+                            </p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                    <div className="bg-gray-50 p-4">
+                      <a
+                        href="##"
+                        className="flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                      >
+                        <span className="flex items-center">
+                          <span className="text-sm font-medium text-gray-900">
+                            Documentation
+                          </span>
+                        </span>
+                        <span className="block text-sm text-gray-500">
+                          Start integrating products and tools
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center -ms-2 relative">
+                {/* //relative */}
+                <a
+                  id="impact"
+                  onMouseEnter={() =>
+                    setIsopen({
+                      open: true,
+                      menuName: "impact",
+                    })
+                  }
+                  href="#"
+                  className="text-base font-medium text-gray-400 hover:text-gray-600 transition-colors duration-300"
+                >
+                  Impact
+                </a>
+                <svg
+                  onMouseEnter={() =>
+                    setIsopen({
+                      open: true,
+                      menuName: "impact",
+                    })
+                  }
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  style={{
+                    fill: "rgba(0, 0, 0, 0.3)",
+                    transform: "",
+                    msFilter: "",
+                  }}
+                >
+                  <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
+                </svg>
+                <div
+                  onMouseLeave={() => {
+                    let time = false;
+                    setTimeout(() => {
+                      time = true;
+                    }, 1000);
+                    if (time) {
+                      if (isopen.menuName !== "") {
+                        setIsopen({
+                          open: true,
+                          menuName: isopen.menuName,
+                        });
+                      } else {
+                        setIsopen({
+                          open: false,
+                          menuName: "",
+                        });
+                      }
+                    }
+                  }}
+                  className={`left-1/2 z-10 mt-3   -translate-x-1/2 top-[2.60rem] transform px-4 sm:px-0   w-screen lg:max-w-xl max-w-sm
+                  ${
+                    isopen.open && isopen.menuName === "impact"
+                      ? "absolute"
+                      : "hidden"
+                  }
+                  `}
+                  //  ${
+                  //   isopen ? "absolute" : "hidden "
+                  // }
+                >
+                  <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-1">
+                      {solutions.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                        >
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
+                            {/* <item.icon aria-hidden="true" /> */}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="36"
+                              height="36"
+                              viewBox="0 0 24 24"
+                              style={{
+                                fill: "rgba(0, 0, 0, 0.3)",
+                                transform: "",
+                                msFilter: "",
+                              }}
+                              // "fill: rgba(0, 0, 0, 0.3);transform: ;msFilter:;"
+                            >
+                              <path d="M3 16h2v5H3zm4-3h2v8H7zm4-3h2v11h-2zm4-3h2v14h-2z"></path>
+                            </svg>
+                          </div>
+                          <div className="ml-4">
+                            <p className="text-sm font-medium text-gray-900">
+                              {item.name}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              {item.description}
+                            </p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                    <div className="bg-gray-50 p-4">
+                      <a
+                        href="##"
+                        className="flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                      >
+                        <span className="flex items-center">
+                          <span className="text-sm font-medium text-gray-900">
+                            Documentation
+                          </span>
+                        </span>
+                        <span className="block text-sm text-gray-500">
+                          Start integrating products and tools
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-x-2 items-center">
+              {/* one cart icon and one user icon like google */}
+              <Image src="/cart.webp" alt="cart" width={35} height={35} />
+              <Image src="/user.webp" alt="user" width={35} height={35} />
+              <div className="flex md:hidden">
+                <button
+                  onClick={() =>
+                    setIsopen({
+                      open: true,
+                      menuName: "menu",
+                    })
+                  }
+                  type="button"
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+                  // className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500"
+                >
+                  <span className="sr-only">Open main menu</span>
+                  {/* <!-- Heroicon name: outline/menu --> */}
+                  <svg
+                    className="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="rgba(0, 0, 0, 0.3)"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      // strokeLinecap="round"
+                      // strokeLinejoin="round"
+                      // strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            {/* online 3 dot */}
+          </div>
+        </nav>
+      </header>
+    </div>
+  );
 }
